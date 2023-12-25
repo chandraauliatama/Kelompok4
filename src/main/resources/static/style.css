@@ -1,0 +1,63 @@
+@font-face {
+  font-family: "Quicksand";
+  src: url("fonts/Quicksand-Light.ttf");
+  font-style: normal;
+  font-weight: 300; /* untuk varian light */
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: "Quicksand";
+  src: url("fonts/Quicksand-Regular.ttf");
+  font-style: normal;
+  font-weight: 400; /* untuk varian normal */
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: "Quicksand";
+  src: url("fonts/Quicksand-Medium.ttf");
+  font-style: normal;
+  font-weight: 500; /* untuk varian medium */
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: "Quicksand";
+  src: url("fonts/Quicksand-SemiBold.ttf");
+  font-style: normal;
+  font-weight: 600; /* untuk varian semibold */
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: "Quicksand";
+  src: url("fonts/Quicksand-Bold.ttf");
+  font-style: normal;
+  font-weight: 700; /* untuk varian bold */
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: "ScheherazadeNew";
+  src: url("fonts/ScheherazadeNew-Regular.ttf");
+  font-style: normal;
+  font-weight: 400; /* untuk varian normal */
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: "ScheherazadeNew";
+  src: url("fonts/ScheherazadeNew-Bold.ttf");
+  font-style: normal;
+  font-weight: 700; /* untuk varian bold */
+  font-display: fallback;
+}
+
+body {
+  font-family: "Quicksand";
+}
+
+.arabic {
+  font-family: "ScheherazadeNew";
+}

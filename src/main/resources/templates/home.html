@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Web Al-Quran - Kelompok 4 </title>
+
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/webjars/font-awesome/6.3.0/css/all.min.css" />
+    <link rel="stylesheet" th:href="@{/style.css}" />
+  </head>
+  <body>
+    <!-- Head -->
+    <nav class="navbar navbar-dark bg-primary sticky-top">
+      <div class="container">
+        <a class="navbar-brand m-0 h1 fw-bold" href="/"
+          ><i class="fa-solid  "></i> Web Al-Quran - Kelompok 4 </a
+        >
+      </div>
+    </nav>
+    <!-- Content -->
+    <div class="container my-4">
+      <div class="card p-2 text-center mb-2">
+        <div class="fs-2 arabic p-2 fw-bold">
+          بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيْمِ
+        </div>
+      </div>
+      <div class="input-group flex-nowrap">
+        <span class="input-group-text" id="search-icon"
+          ><i class="fa-solid fa-search"></i
+        ></span>
+        <input
+          id="search"
+          class="form-control"
+          type="text"
+          placeholder="Cari Surat ..."
+          aria-label="Search"
+          aria-describedby="search-icon"
+        />
+      </div>
+      <div class="row px-2">
+        <div
+          class="item-card col-12 col-sm-6 col-md-4 g-2"
+          th:each="surat : ${obj.data}"
+        >
+          <div class="card shadow-sm p-2 bg-light">
+            <div
+              class="item-card__name fw-semibold"
+              th:text="${surat.nomor} + '. ' + ${surat.namaLatin}"
+            ></div>
+            <div
+              class="text-end fs-2 arabic fw-bold"
+              th:text="${surat.nama}"
+            ></div>
+            <div
+              class="text-end"
+              th:text="${surat.tempatTurun} + ' • ' + ${surat.arti}"
+            ></div>
+            <a th:href="'/surat/' + ${surat.nomor}" class="stretched-link"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer -->
+    <div style="height: 50px"></div>
+    <footer
+      class="fixed-bottom d-flex align-items-center justify-content-center"
+      style="background-color: #0D6EFE; height: 50px"
+    >
+      <div class="text-center text-white my-auto">© 2023 UAS RPL LANJUT - Kelompok 4</div>
+    </footer>
+    <!-- Back to top -->
+    <button
+      id="back-to-top"
+      class="btn btn-primary btn-back-to-top"
+      style="
+        position: fixed;
+        bottom: 70px;
+        right: 20px;
+        z-index: 9999;
+        display: none;
+      "
+      title="Kembali ke atas"
+    >
+      <i class="fas fa-chevron-up"></i>
+    </button>
+    <!-- Script -->
+    <script th:src="@{/script.js}"></script>
+    <script th:inline="javascript">
+      const search = document.getElementById("search");
+
+      search.addEventListener("input", (event) => {
+        const value = removeSpecialChars(event.target.value);
+        const items = document.querySelectorAll(".item-card");
+
+        if (items.length > 0) {
+          items.forEach((item) => {
+            const name = removeSpecialChars(
+              item.querySelector(".item-card__name").innerText
+            );
+            if (name.indexOf(value) > -1) {
+              item.style.display = "block";
+            } else {
+              item.style.display = "none";
+            }
+          });
+        }
+      });
+
+      const removeSpecialChars = (value) =>
+        value
+          .replace(/[^\w\s]|_/gi, "")
+          .replace(/\s+/g, "")
+          .toLowerCase();
+    </script>
+  </body>
+</html>
